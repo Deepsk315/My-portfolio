@@ -27,8 +27,14 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
-
-    let response = await fetch("http://localhost:5000/contact", {
+    let url;
+    if (process.env.NODE_ENV == "production") {
+      url = "https://myportfolio3697.herokuapp.com/contact";
+    } else {
+      url = "http://localhost:5000/contact";
+    }
+    console.log("post url : ", url);
+    let response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "Application/json;charset=utf-8",

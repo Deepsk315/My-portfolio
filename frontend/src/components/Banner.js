@@ -7,6 +7,7 @@ const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeteleted] = useState(false);
   const toRotate = ["Web Developer", "Full Stack Developer", "Web3 Developer"];
+  const [activatedLink, setactivatedLink] = useState("home");
   const [text, setText] = useState("");
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const period = 2000;
@@ -61,7 +62,7 @@ const Banner = () => {
               BlockChain.Want to know how I may help your project? Please Check
               out my projects and resume.{" "}
             </p>
-            <button onClick={() => console.log("connect")}>
+            <button onClick={() => setactivatedLink("connect")}>
               Let's Connect <ArrowRightCircle size={25} />
             </button>
           </Col>

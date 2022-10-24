@@ -89,7 +89,7 @@ function NavBar() {
             <button
               className="vvd"
               style={{ borderRadius: 10 }}
-              onClick={() => console.log("clicked")}
+              onClick={() => setactivatedLink("connect")}
             >
               <span>Let's Connect</span>
             </button>
