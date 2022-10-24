@@ -1,16 +1,30 @@
+const path = require("path");
 const express = require("express");
 const router = express.Router();
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
+
 //server used to sendmail
 const app = express();
+const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use("/", router);
-app.listen(process.env.PORT, () =>
-  console.log(`Server running on port : ${process.env.PORT}`)
-);
+
+const __dirname = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+  );
+} else {
+  app.get("/", (req, res) => {
+    res.send("My server");
+  });
+}
+app.listen(PORT, () => console.log(`Server running on port : ${PORT}`));
 
 const contactEmail = nodemailer.createTransport({
   host: "smtp.gmail.com",
