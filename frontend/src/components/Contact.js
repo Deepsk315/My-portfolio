@@ -33,7 +33,6 @@ const Contact = () => {
     } else {
       url = "http://localhost:5000/contact";
     }
-    console.log("post url : ", url);
     let response = await fetch(url, {
       method: "POST",
       headers: {
