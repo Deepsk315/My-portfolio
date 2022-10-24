@@ -16,6 +16,7 @@ const Contact = () => {
   const [formDetails, setFormDetails] = useState(formInitialDetails);
   const [buttontext, setButtonText] = useState("Send");
   const [status, setStatus] = useState({});
+  const [buttonEnable, setButtonEnable] = useState(false);
 
   const onFormUpdate = (category, value) => {
     setFormDetails({
@@ -25,37 +26,48 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e) => {
+    console.log(formDetails);
     e.preventDefault();
-    setButtonText("Sending...");
-    let url;
-    if (process.env.NODE_ENV == "production") {
-      url = "https://myportfolio3697.herokuapp.com/contact";
+
+    if (
+      formDetails.email == "" ||
+      formDetails.firstName == "" ||
+      formDetails.lastName == "" ||
+      formDetails.message == ""
+    ) {
+      toastAlert("error", "Please Fill the Empty Fields", "error");
     } else {
-      url = "http://localhost:5000/contact";
-    }
-    let response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formDetails),
-    });
-    let result = await response.json();
-    setButtonText("Send");
-    setFormDetails(formInitialDetails);
-    if (result.code === 200) {
-      toastAlert("success", "Message sent successfully", "success");
-      setStatus({ success: true, message: "Message sent successfully" });
-    } else {
-      toastAlert(
-        "error",
-        "Something went wrong , please try again later.",
-        "error"
-      );
-      setStatus({
-        success: false,
-        message: "Something went wrong , please try again later.",
+      setButtonText("Sending...");
+      let url;
+      if (process.env.NODE_ENV == "production") {
+        url = "https://myportfolio3697.herokuapp.com/contact";
+      } else {
+        url = "http://localhost:5000/contact";
+      }
+      let response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "Application/json;charset=utf-8",
+        },
+        body: JSON.stringify(formDetails),
       });
+      let result = await response.json();
+      setButtonText("Send");
+      setFormDetails(formInitialDetails);
+      if (result.code === 200) {
+        toastAlert("success", "Message sent successfully", "success");
+        setStatus({ success: true, message: "Message sent successfully" });
+      } else {
+        toastAlert(
+          "error",
+          "Something went wrong , please try again later.",
+          "error"
+        );
+        setStatus({
+          success: false,
+          message: "Something went wrong , please try again later.",
+        });
+      }
     }
   };
 
@@ -87,7 +99,7 @@ const Contact = () => {
                     onChange={(e) => onFormUpdate("lastName", e.target.value)}
                   />
                 </Col>
-                <Col sm={6} className="px-1">
+                <Col sm={12} className="px-1">
                   <input
                     type="email"
                     value={formDetails.email}
@@ -95,7 +107,7 @@ const Contact = () => {
                     onChange={(e) => onFormUpdate("email", e.target.value)}
                   />
                 </Col>
-                <Col sm={6} className="px-1">
+                {/* <Col sm={6} className="px-1">
                   <input
                     type="number"
                     value={formDetails.phone}
@@ -103,7 +115,7 @@ const Contact = () => {
                     maxLength={10}
                     onChange={(e) => onFormUpdate("phone", e.target.value)}
                   />
-                </Col>
+                </Col> */}
                 <Col sm={12} className="px-1">
                   <textarea
                     type="text"
@@ -117,17 +129,6 @@ const Contact = () => {
                     <span>{buttontext}</span>
                   </button>
                 </Col>
-                {/* {status.message && (
-                  <Col>
-                    <p
-                      className={
-                        status.success === false ? "danger" : "success"
-                      }
-                    >
-                      {status.message}
-                    </p>
-                  </Col>
-                )} */}
               </Row>
             </form>
           </Col>

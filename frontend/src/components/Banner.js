@@ -43,6 +43,10 @@ const Banner = () => {
     }
   };
 
+  const onUpdateActiveLink = (link) => {
+    setactivatedLink(link);
+  };
+
   return (
     <section className="banner" id="home">
       <Container>
@@ -62,9 +66,11 @@ const Banner = () => {
               BlockChain.Want to know how I may help your project? Please Check
               out my projects and resume.{" "}
             </p>
-            <button onClick={() => setactivatedLink("connect")}>
-              Let's Connect <ArrowRightCircle size={25} />
-            </button>
+            <a href="#connect" style={{ textDecoration: "none" }}>
+              <button onClick={() => onUpdateActiveLink("connect")}>
+                Let's Connect <ArrowRightCircle size={25} />
+              </button>
+            </a>
           </Col>
           <Col xs={12} md={6} xl={5}>
             <img src={headerImg} alt="Header Img" />

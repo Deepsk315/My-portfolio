@@ -28,6 +28,9 @@ function NavBar() {
     setactivatedLink(link);
   };
 
+  let href =
+    "https://drive.google.com/file/d/1dkn_3xqKlN5lmu3_pMUvuuaMcnKpAXld/view?usp=sharing";
+
   return (
     <Navbar expand="lg">
       <Container>
@@ -86,12 +89,27 @@ function NavBar() {
                 <img src={navIcon3} alt="facebook" />
               </a> */}
             </div>
+            <button className="vvd" style={{ borderRadius: 10 }}>
+              <a
+                href={href}
+                style={{
+                  textDecoration: "none",
+                  color: "#fff",
+                  fontSize: 20,
+                }}
+                target="_blank"
+              >
+                Resume
+              </a>
+            </button>
             <button
               className="vvd"
               style={{ borderRadius: 10 }}
-              onClick={() => setactivatedLink("connect")}
+              onClick={() => onUpdateActiveLink("connect")}
             >
-              <span>Let's Connect</span>
+              <a href="#connect" style={{ textDecoration: "none" }}>
+                <span style={{ color: "#fff" }}>Let's Connect</span>
+              </a>
             </button>
           </span>
         </Navbar.Collapse>

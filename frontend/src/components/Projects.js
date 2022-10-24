@@ -11,7 +11,7 @@ const Projects = () => {
   const projects = [
     {
       title: "DSK Store",
-      projTitle: "Mini E-COMM APPLICATION",
+      projTitle: "MINI E-COMM APPLICATION",
       imgUrl: projImg1,
       link: "https://dskstoreapp.herokuapp.com/",
       description:
