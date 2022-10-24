@@ -11,7 +11,7 @@ const Projects = () => {
   const projects = [
     {
       title: "DSK Store",
-      projTitle: "Mini E-Commerce Application",
+      projTitle: "Mini E-COMM APPLICATION",
       imgUrl: projImg1,
       link: "https://dskstoreapp.herokuapp.com/",
       description:
@@ -20,7 +20,7 @@ const Projects = () => {
     },
     {
       title: "Pikaso",
-      projTitle: "NFT Market",
+      projTitle: "NFT MARKET",
       imgUrl: projImg2,
       link: "https://pikaso.market/",
       description:
@@ -29,12 +29,12 @@ const Projects = () => {
     },
     {
       title: "Staking",
-      projTitle: "Decentralised Token Staking",
+      projTitle: "DECENTRALISED TOKEN STAKING",
       imgUrl: projImg3,
       link: "https://staking.medifakt.com/",
       description:
         "Decentralised Token Staking Application which is used for adding liquiduity to the token with a % return in a year as rewards. The Staking button enables when you have atleast 10 FAKT Token with gas fees in Ethereum.",
-      techStack: "ReactJs, BlockChain ",
+      techStack: "Javascript, ReactJs, BlockChain ",
     },
   ];
 
