@@ -2,13 +2,13 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "web": "server.js",
   "engines": {
     "node": "14.17.4",
     "npm": "6.14.14"
   },
   "scripts": {
-    "start": "node server",
+    "start": "node server.js",
     "server": "nodemon server",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
